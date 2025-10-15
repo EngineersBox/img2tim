@@ -19,5 +19,6 @@ add_executable(Img2TIM "main.cpp" "tim.cpp")
 target_include_directories(Img2TIM PRIVATE "tim.h")
 
 # FreeImage
-find_package(freeimage CONFIG REQUIRED)
-target_link_libraries(Img2TIM PRIVATE freeimage::FreeImage freeimage::FreeImagePlus)
+# find_package(FreeImage CONFIG REQUIRED)
+pkg_check_modules(FreeImage REQUIRED IMPORTED_TARGET GLOBAL freeimage)
+target_link_libraries(Img2TIM PRIVATE PkgConfig::FreeImage)
